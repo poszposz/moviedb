@@ -15,7 +15,7 @@ internal extension URLRequest {
         case http, https
     }
 
-    private static let baseURL = "api.themoviedb.org/3"
+    private static let baseURL = "api.themoviedb.org"
     private static let apiKey = Keys.MovieDBKeys().movieDatabaseAPIKey
 
     init<Response>(request: Request<Response>) {

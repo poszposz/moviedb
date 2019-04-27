@@ -9,12 +9,12 @@ internal protocol MovieDataProvider {
 
     init(networkClient: NetworkClient)
 
-    func obtainMovies(page: Int, sorted: Bool, completion: @escaping (Result<[Movie], NetworkError>) -> ())
+    func obtainMovies(page: Int, sorted: Bool, completion: @escaping (Result<Page<Movie>, NetworkError>) -> ())
 
     func obtainMovieDetails(movie: Movie, completion: @escaping (Result<MovieDetails, NetworkError>) -> ())
 }
 
-internal final class DefaultMovieDataProvider {
+internal final class DefaultMovieDataProvider: MovieDataProvider {
 
     private enum Path {
         case movieList
@@ -23,9 +23,9 @@ internal final class DefaultMovieDataProvider {
         var urlString: String {
             switch self {
             case .movieList:
-                return "/discover/movie"
+                return "/3/discover/movie"
             case .movieDetail(let id):
-                return "/movie/\(id)"
+                return "/3/movie/\(id)"
             }
         }
     }
@@ -36,12 +36,12 @@ internal final class DefaultMovieDataProvider {
         self.networkClient = networkClient
     }
 
-    func obtainMovies(page: Int, sorted: Bool, completion: @escaping (Result<[Movie], NetworkError>) -> ()) {
+    func obtainMovies(page: Int, sorted: Bool, completion: @escaping (Result<Page<Movie>, NetworkError>) -> ()) {
         var queryItems = [URLQueryItem(name: "page", value: String(page))]
         if sorted {
             queryItems.append(URLQueryItem(name: "sort_by", value: "release_date.desc"))
         }
-        let request = Request<[Movie]>(
+        let request = Request<Page<Movie>>(
             method: .GET,
             path: Path.movieList.urlString,
             queryItems: queryItems

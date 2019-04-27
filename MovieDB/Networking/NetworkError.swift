@@ -41,4 +41,8 @@ internal enum NetworkError: Error {
             return nil
         }
     }
+
+    internal var humanReadableDescription: String {
+        return "Something went wrong"
+    }
 }

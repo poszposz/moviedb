@@ -11,10 +11,18 @@ internal final class ViewControllerAssembly {
 
     private let dependencyAssembly = DependencyAssembly()
 
-    lazy var moviewListViewController = MovieListViewController(networkClient: dependencyAssembly.networkClient)
+    func moviewListViewController() -> MovieListViewController {
+        return MovieListViewController(movieDataProvider: dependencyAssembly.movieDataProvider)
+    }
+
+    func movieDetailsViewController(movie: Movie) -> MovieDetailViewController {
+        return MovieDetailViewController(movie: movie, movieDataProvider: dependencyAssembly.movieDataProvider)
+    }
 }
 
 fileprivate final class DependencyAssembly {
 
-    var networkClient = NetworkClient()
+    lazy var networkClient = NetworkClient()
+
+    lazy var movieDataProvider = DefaultMovieDataProvider(networkClient: networkClient)
 }
