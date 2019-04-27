@@ -14,7 +14,7 @@ class AppDelegate: UIResponder, UIApplicationDelegate {
         return window
     }()
 
-    private lazy var rootViewController = UINavigationController(rootViewController: MovieListViewController())
+    private lazy var rootViewController = UINavigationController(rootViewController: ViewControllerAssembly.defaultAssembly.moviewListViewController)
 
     func application(_ application: UIApplication, didFinishLaunchingWithOptions launchOptions: [UIApplication.LaunchOptionsKey: Any]?) -> Bool {
         window?.makeKeyAndVisible()

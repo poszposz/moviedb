@@ -4,6 +4,7 @@
 //
 
 import Foundation
+import Keys
 
 internal extension URLRequest {
 
@@ -15,6 +16,7 @@ internal extension URLRequest {
     }
 
     private static let baseURL = "api.themoviedb.org/3"
+    private static let apiKey = Keys.MovieDBKeys().movieDatabaseAPIKey
 
     init<Response>(request: Request<Response>) {
         var components = URLComponents()
@@ -22,6 +24,7 @@ internal extension URLRequest {
         components.host = URLRequest.baseURL
         components.path = request.path
         components.queryItems = request.queryItems
+        components.queryItems?.append(URLQueryItem(name: "api_key", value: URLRequest.apiKey))
         guard let url = components.url else {
             preconditionFailure("Failed to create url from given components.")
         }
