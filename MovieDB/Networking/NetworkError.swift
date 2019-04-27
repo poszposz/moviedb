@@ -43,6 +43,19 @@ internal enum NetworkError: Error {
     }
 
     internal var humanReadableDescription: String {
-        return "Something went wrong"
+        switch self {
+        case .systemError(error: let error):
+            return error.localizedDescription
+        case .describedError(description: let description):
+            return description
+        case .notFound:
+            return "There seems to be some issues with the API link. Please contact us."
+        case .badRequest, .improperResponse(error: _):
+            return "There seems to be some issues with the API response. Please contact us."
+        case .unauthorized:
+            return "Authorization token expired. Please contact us."
+        case .serverError:
+            return "Server is not responding for some reason. Please try again later."
+        }
     }
 }
