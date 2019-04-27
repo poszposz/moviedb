@@ -91,8 +91,9 @@ extension MovieListViewController: UITableViewDataSource {
     }
 
     func tableView(_ tableView: UITableView, willDisplay cell: UITableViewCell, forRowAt indexPath: IndexPath) {
-        guard indexPath.row == movies.count else { return }
+        guard indexPath.row == movies.count - 1 else { return }
         currentPage += 1
+        downloadMovieList(page: currentPage, sorted: sorted)
     }
 }
 

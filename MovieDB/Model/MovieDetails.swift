@@ -19,7 +19,7 @@ internal struct MovieDetails {
 
     let status: String
 
-    let posterPath: String
+    let posterPath: String?
 }
 
 extension MovieDetails: Codable {
@@ -31,7 +31,7 @@ extension MovieDetails: Codable {
         case homepage
         case revenue
         case status
-        case posterPath = "poster_path"
+        case poster_path
     }
 
     init(from decoder: Decoder) throws {
@@ -39,9 +39,9 @@ extension MovieDetails: Codable {
         id = try container.decode(Int.self, forKey: .id)
         title = try container.decode(String.self, forKey: .title)
         overview = try container.decode(String.self, forKey: .overview)
-        homepage = try container.decode(String?.self, forKey: .homepage)
+        homepage = try container.decodeIfPresent(String.self, forKey: .homepage)
         revenue = try container.decode(Int.self, forKey: .revenue)
         status = try container.decode(String.self, forKey: .status)
-        posterPath = try container.decode(String.self, forKey: .posterPath)
+        posterPath = try container.decodeIfPresent(String.self, forKey: .posterPath)
     }
 }

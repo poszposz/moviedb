@@ -11,17 +11,12 @@ internal extension URLRequest {
     /// Dafult timeout for all requests.
     private static let defaultTimeoutInterval: TimeInterval = 30
 
-    private enum Scheme: String {
-        case http, https
-    }
-
-    private static let baseURL = "api.themoviedb.org"
     private static let apiKey = Keys.MovieDBKeys().movieDatabaseAPIKey
 
     init<Response>(request: Request<Response>) {
         var components = URLComponents()
-        components.scheme = Scheme.https.rawValue
-        components.host = URLRequest.baseURL
+        components.scheme = URL.Scheme.https.rawValue
+        components.host = URL.baseURLString
         components.path = request.path
         components.queryItems = request.queryItems
         components.queryItems?.append(URLQueryItem(name: "api_key", value: URLRequest.apiKey))
