@@ -13,8 +13,6 @@ internal struct Request<Response: Codable> {
 
     let method: HttpMethod
 
-    let response: Response
-
     let path: String
 
     let queryItems: [URLQueryItem]

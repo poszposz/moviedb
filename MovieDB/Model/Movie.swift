@@ -8,3 +8,7 @@ import Foundation
 internal struct Movie {
     
 }
+
+extension Movie: Codable {
+    
+}

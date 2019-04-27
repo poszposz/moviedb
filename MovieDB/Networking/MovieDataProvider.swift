@@ -16,6 +16,19 @@ internal protocol MovieDataProvider {
 
 internal final class DefaultMovieDataProvider {
 
+    private enum Path {
+        case movieList, movieDetail
+
+        var urlString: String {
+            switch self {
+            case .movieList:
+                return ""
+            case .movieDetail:
+                return ""
+            }
+        }
+    }
+
     private let networkClient: NetworkClient
 
     init(networkClient: NetworkClient) {
@@ -23,10 +36,24 @@ internal final class DefaultMovieDataProvider {
     }
 
     func obtainMovies(completion: Result<[Movie], NetworkError>) {
+        let request = Request<[Movie]>(
+            method: .GET,
+            path: Path.movieList.urlString,
+            queryItems: []
+        )
+        networkClient.perform(request: request) { (result) in
 
+        }
     }
 
     func obtainMovieDetails(completion: Result<MovieDetails, NetworkError>) {
+        let request = Request<MovieDetails>(
+            method: .GET,
+            path: Path.movieDetail.urlString,
+            queryItems: []
+        )
+        networkClient.perform(request: request) { (result) in
 
+        }
     }
 }
