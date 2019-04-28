@@ -16,14 +16,18 @@ internal extension URLRequest {
 
     /// Creates a new instance of URL request for a given Request instance. Adds api key authorization.
     ///
-    /// - Parameter request: a request with all data used to create a URLRequest.
-    init<Response>(request: Request<Response>) {
+    /// - Parameters:
+    ///     - request: a request with all data used to create a URLRequest.
+    ///     - addAuthorization: specifies if api key should be added to request.
+    init<Response>(request: Request<Response>, addAuthorization: Bool = true) {
         var components = URLComponents()
         components.scheme = URL.Scheme.https.rawValue
         components.host = URL.baseURLString
         components.path = request.path
         components.queryItems = request.queryItems
-        components.queryItems?.append(URLQueryItem(name: "api_key", value: URLRequest.apiKey))
+        if addAuthorization {
+            components.queryItems?.append(URLQueryItem(name: "api_key", value: URLRequest.apiKey))
+        }
         guard let url = components.url else {
             preconditionFailure("Failed to create url from given components.")
         }
