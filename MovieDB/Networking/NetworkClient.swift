@@ -9,7 +9,7 @@ internal final class NetworkClient {
 
     private let urlSession = URLSession(configuration: URLSessionConfiguration.default)
 
-    internal func perform<Response>(request: Request<Response>, completion: @escaping (Result<Response, NetworkError>) -> ()) where Response: Codable {
+    internal func perform<Response>(request: Request<Response>, completion: @escaping (Result<Response, NetworkError>) -> ()) where Response: Decodable {
         let request = URLRequest(request: request)
         urlSession.dataTask(with: request) { [weak self] (data, response, error) in
             if let error = error {

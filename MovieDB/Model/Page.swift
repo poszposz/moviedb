@@ -5,16 +5,16 @@
 
 import Foundation
 
-internal struct Page<Entity: Codable> {
+internal struct Page<Entity: Decodable> {
 
     let page: Int
 
     let results: [Entity]
 }
 
-extension Page: Codable {
+extension Page: Decodable {
 
-    private enum CodinKeys: String, CodingKey {
+    private enum CodingKeys: String, CodingKey {
         case page
         case results
     }

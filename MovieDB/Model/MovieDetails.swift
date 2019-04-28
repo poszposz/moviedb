@@ -22,9 +22,9 @@ internal struct MovieDetails {
     let posterPath: String?
 }
 
-extension MovieDetails: Codable {
+extension MovieDetails: Decodable {
 
-    private enum CodinKeys: String, CodingKey {
+    private enum CodingKeys: String, CodingKey {
         case id
         case title
         case overview
@@ -42,6 +42,6 @@ extension MovieDetails: Codable {
         homepage = try container.decodeIfPresent(String.self, forKey: .homepage)
         revenue = try container.decode(Int.self, forKey: .revenue)
         status = try container.decode(String.self, forKey: .status)
-        posterPath = try container.decodeIfPresent(String.self, forKey: .posterPath)
+        posterPath = try container.decodeIfPresent(String.self, forKey: .poster_path)
     }
 }

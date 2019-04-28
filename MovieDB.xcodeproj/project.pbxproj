@@ -28,6 +28,7 @@
 		38DC0E0E2274910900C5B793 /* UIViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 38DC0E0D2274910900C5B793 /* UIViewController.swift */; };
 		38DC0E102274994700C5B793 /* UIStackView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 38DC0E0F2274994700C5B793 /* UIStackView.swift */; };
 		38DC0E1222749BC900C5B793 /* URL.swift in Sources */ = {isa = PBXBuildFile; fileRef = 38DC0E1122749BC900C5B793 /* URL.swift */; };
+		38DC0E1422759D5100C5B793 /* UIImageView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 38DC0E1322759D5100C5B793 /* UIImageView.swift */; };
 		4EAE71B698139CE9461839B3 /* Pods_MovieDBTests.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 3FAA0EC35EF378EF814E2C5E /* Pods_MovieDBTests.framework */; };
 /* End PBXBuildFile section */
 
@@ -67,6 +68,7 @@
 		38DC0E0D2274910900C5B793 /* UIViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = UIViewController.swift; sourceTree = "<group>"; };
 		38DC0E0F2274994700C5B793 /* UIStackView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = UIStackView.swift; sourceTree = "<group>"; };
 		38DC0E1122749BC900C5B793 /* URL.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = URL.swift; sourceTree = "<group>"; };
+		38DC0E1322759D5100C5B793 /* UIImageView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = UIImageView.swift; sourceTree = "<group>"; };
 		3FAA0EC35EF378EF814E2C5E /* Pods_MovieDBTests.framework */ = {isa = PBXFileReference; explicitFileType = wrapper.framework; includeInIndex = 0; path = Pods_MovieDBTests.framework; sourceTree = BUILT_PRODUCTS_DIR; };
 		4E33EFE6A5F39E46D9455707 /* Pods-MovieDB.release.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-MovieDB.release.xcconfig"; path = "Pods/Target Support Files/Pods-MovieDB/Pods-MovieDB.release.xcconfig"; sourceTree = "<group>"; };
 		93E13B4F322CB4AEA6EBC00D /* Pods_MovieDB.framework */ = {isa = PBXFileReference; explicitFileType = wrapper.framework; includeInIndex = 0; path = Pods_MovieDB.framework; sourceTree = BUILT_PRODUCTS_DIR; };
@@ -177,6 +179,7 @@
 				38DC0E05227485A000C5B793 /* UIView.swift */,
 				38DC0E0D2274910900C5B793 /* UIViewController.swift */,
 				38DC0E0F2274994700C5B793 /* UIStackView.swift */,
+				38DC0E1322759D5100C5B793 /* UIImageView.swift */,
 			);
 			path = Extensions;
 			sourceTree = "<group>";
@@ -423,6 +426,7 @@
 				38DC0E1222749BC900C5B793 /* URL.swift in Sources */,
 				38DC0DF0227469A800C5B793 /* Movie.swift in Sources */,
 				38DC0DFB2274749A00C5B793 /* MovieDetails.swift in Sources */,
+				38DC0E1422759D5100C5B793 /* UIImageView.swift in Sources */,
 				38DC0E0A227486E200C5B793 /* NSObject.swift in Sources */,
 				38DC0E022274840600C5B793 /* MovieDetailViewController.swift in Sources */,
 				38DC0E102274994700C5B793 /* UIStackView.swift in Sources */,

@@ -15,7 +15,11 @@ internal final class MovieDetailViewController: UIViewController {
         return stackView
     }()
 
-    private lazy var posterImage = UIImageView.autolayoutView()
+    private lazy var posterImage: UIImageView = {
+        let imageView = UIImageView.autolayoutView()
+        imageView.contentMode = .scaleAspectFit
+        return imageView
+    }()
 
     private lazy var titleLabel = UILabel.autolayoutView()
 
@@ -60,7 +64,8 @@ internal final class MovieDetailViewController: UIViewController {
             stackView.topAnchor.constraint(equalTo: view.layoutMarginsGuide.topAnchor, constant: 50),
             stackView.centerXAnchor.constraint(equalTo: view.centerXAnchor),
             stackView.rightAnchor.constraint(equalTo: view.layoutMarginsGuide.rightAnchor),
-            stackView.leftAnchor.constraint(equalTo: view.layoutMarginsGuide.leftAnchor)
+            stackView.leftAnchor.constraint(equalTo: view.layoutMarginsGuide.leftAnchor),
+            posterImage.heightAnchor.constraint(equalToConstant: 250)
         ]
         NSLayoutConstraint.activate(constraints)
         downloadMovieDetails()
@@ -80,24 +85,8 @@ internal final class MovieDetailViewController: UIViewController {
     private func realoadWith(movieDetails: MovieDetails) {
         titleLabel.text = movieDetails.title
         statusLabel.text = movieDetails.status
-        revenueLabel.text = dollarNumberFormatter.string(from: NSNumber(value: movieDetails.revenue))
+        revenueLabel.text = movieDetails.revenue == 0 ? nil : dollarNumberFormatter.string(from: NSNumber(value: movieDetails.revenue))
         overviewLabel.text = movieDetails.overview
-        loadPoster(movieDetails: movieDetails)
-    }
-
-    private func loadPoster(movieDetails: MovieDetails) {
-        DispatchQueue.global().async { [weak self] in
-            guard
-                let url = URL.baseURL,
-                let posterPath = movieDetails.posterPath,
-                let data = try? Data(contentsOf: url.appendingPathExtension(posterPath))
-            else {
-                return
-            }
-            let image = UIImage(data: data)
-            DispatchQueue.main.async {
-                self?.posterImage.image = image
-            }
-        }
+        posterImage.loadResource(path: movieDetails.posterPath)
     }
 }

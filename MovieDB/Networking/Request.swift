@@ -9,7 +9,7 @@ internal enum HttpMethod: String {
     case GET, POST
 }
 
-internal struct Request<Response: Codable> {
+internal struct Request<Response: Decodable> {
 
     let method: HttpMethod
 

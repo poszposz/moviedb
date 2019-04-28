@@ -14,9 +14,9 @@ internal struct Movie {
     let overview: String
 }
 
-extension Movie: Codable {
+extension Movie: Decodable {
 
-    private enum CodinKeys: String, CodingKey {
+    private enum CodingKeys: String, CodingKey {
         case id
         case title
         case overview
