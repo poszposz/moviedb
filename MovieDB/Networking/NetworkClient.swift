@@ -5,7 +5,17 @@
 
 import Foundation
 
-internal final class NetworkClient {
+internal protocol NetworkClient {
+
+    /// Performs a given Request to the API.
+    ///
+    /// - Parameters:
+    ///   - request: a request that should be performed.
+    ///   - completion: a completion block executed after network call has finished. Returns a swift Result instance with either a Page with results or an error.
+    func perform<Response>(request: Request<Response>, completion: @escaping (Result<Response, NetworkError>) -> ()) where Response: Decodable
+}
+
+internal final class DefaultNetworkClient: NetworkClient {
 
     private let urlSession = URLSession(configuration: URLSessionConfiguration.default)
 

@@ -44,12 +44,18 @@ internal final class MovieDetailViewController: UIViewController {
 
     private let movieDataProvider: MovieDataProvider
 
+    /// Creates a new instance of MovieDetailViewController. It's a class used to display details of a given movie.
+    ///
+    /// - Parameters:
+    ///   - movie: a movie that details should be downloaded for.
+    ///   - movieDataProvider: a class used to download movie details from API.
     init(movie: Movie, movieDataProvider: MovieDataProvider) {
         self.movie = movie
         self.movieDataProvider = movieDataProvider
         super.init(nibName: nil, bundle: nil)
     }
 
+    @available(*, unavailable, message: "Not available, use init(movie: _, movieDataProvider: _)")
     required init?(coder aDecoder: NSCoder) {
         fatalError("init(coder:) has not been implemented")
     }

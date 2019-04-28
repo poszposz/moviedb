@@ -26,11 +26,15 @@ internal final class MovieListViewController: UIViewController {
 
     private let movieDataProvider: MovieDataProvider
 
+    /// Creates a new instance of MovieListViewController. It's a class used to display a paginated list of all movies.
+    ///
+    /// - Parameter movieDataProvider: a class used to download movie list.
     init(movieDataProvider: MovieDataProvider) {
         self.movieDataProvider = movieDataProvider
         super.init(nibName: nil, bundle: nil)
     }
 
+    @available(*, unavailable, message: "Not available, use init(movieDataProvider: _)")
     required init?(coder aDecoder: NSCoder) {
         fatalError("init(coder:) has not been implemented")
     }

@@ -5,10 +5,13 @@
 
 import Foundation
 
+/// A class used as a generic wrapper to handle paginated requests.
 internal struct Page<Entity: Decodable> {
 
+    /// A currently downloaded page.
     let page: Int
 
+    /// An array of generic results associated with a given page.
     let results: [Entity]
 }
 

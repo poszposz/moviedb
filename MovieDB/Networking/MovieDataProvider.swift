@@ -7,13 +7,28 @@ import Foundation
 
 internal protocol MovieDataProvider {
 
+    /// Creates a new instance of MovieDataProvider. A clas sused to obtain movie's data.
+    ///
+    /// - Parameter networkClient: a network client that should be used to download movies.
     init(networkClient: NetworkClient)
 
+    /// Downloads a paginated list of all movies with a specified page number. List can be sorted by movie's release date.
+    ///
+    /// - Parameters:
+    ///   - page: a page that movies should be downloaded for.
+    ///   - sorted: specifies if list should be sorted by movie's release date.
+    ///   - completion: a completion block executed after network call has finished. Returns a swift Result instance with either a Page with results or an error.
     func obtainMovies(page: Int, sorted: Bool, completion: @escaping (Result<Page<Movie>, NetworkError>) -> ())
 
+    /// Downloads a details of a given movie.
+    ///
+    /// - Parameters:
+    ///   - movie: a movie fro which details should be downloaded.
+    ///   - completion: a completion block executed after network call has finished. Returns a swift Result instance with either a Page with results or an error.
     func obtainMovieDetails(movie: Movie, completion: @escaping (Result<MovieDetails, NetworkError>) -> ())
 }
 
+/// Default implementation of MovieDataProvider.
 internal final class DefaultMovieDataProvider: MovieDataProvider {
 
     private enum Path {

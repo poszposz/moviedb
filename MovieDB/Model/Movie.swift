@@ -7,10 +7,13 @@ import Foundation
 
 internal struct Movie {
 
+    /// API id of the movie.
     let id: Int
 
+    /// Title of the movie.
     let title: String
 
+    /// Short description of the movie.
     let overview: String
 }
 

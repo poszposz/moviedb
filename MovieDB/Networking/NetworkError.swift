@@ -42,6 +42,7 @@ internal enum NetworkError: Error {
         }
     }
 
+    /// Resturns a human readable description of the error.
     internal var humanReadableDescription: String {
         switch self {
         case .systemError(error: let error):
