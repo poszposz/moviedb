@@ -20,7 +20,7 @@ class UIStackViewExtensionTests: XCTestCase {
         stackView.addArrangedSubviews([subview1, subview2, subview3])
 
         XCTAssertEqual(stackView.arrangedSubviews.count, 3, "Wrong amount of arranged subviews")
-        XCTAssertEqual(stackView.arrangedSubviews[0], subview1, "Wrong amount of arranged subviews")
-        XCTAssertEqual(stackView.arrangedSubviews[2], subview3, "Wrong amount of arranged subviews")
+        XCTAssertEqual(stackView.arrangedSubviews[0], subview1, "Wrong first arranged subview")
+        XCTAssertEqual(stackView.arrangedSubviews[2], subview3, "Wrong second arranged subview")
     }
 }
